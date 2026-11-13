@@ -62,6 +62,7 @@ namespace BoulderDash
         private int _diamonds;
         private int _needed;
         private int _score;
+        private int _scoreAtLevelStart;
         private float _timeLeft;
         private float _playerTimer;
         private float _physicsTimer;
@@ -88,15 +89,12 @@ namespace BoulderDash
         private Font _font;
         private Font _titleFont;
 
-        // Spinning ring: a sprite sheet of DiamondFrames frames side by side.
         private const int DiamondFrames = 8;
         private Texture2D _diamondSheet;
 
-        // Flying enemy: a sprite sheet of EnemyFrames wing-flap frames side by side.
         private const int EnemyFrames = 4;
         private Texture2D _enemySheet;
 
-        // Boulder sprite sheet: frame 0 at rest, frames 1 to 4 falling (flames trail above the cell).
         private const int BoulderFrames = 5;
         private Texture2D _boulderSheet;
 
@@ -106,9 +104,8 @@ namespace BoulderDash
         {
             foreach (string name in new[] { "dirt", "wall", "boulder", "diamond", "exit", "exit_closed", "player", "skeleton", "key", "door", "floor", "background" })
             {
-                // Accept "dirt.png", "Dirt.png", and "exit_closed.png" / "Exitclosed.png" style names.
                 string plain = name.Replace("_", "");
-                foreach (string file in new[] { name, Capitalise(name), plain, Capitalise(plain) })
+                foreach (string file in new[] { Capitalise(name), Capitalise(plain), name, plain })
                 {
                     string path = "res://Art/" + file + ".png";
                     if (ResourceLoader.Exists(path))
@@ -197,8 +194,15 @@ namespace BoulderDash
         private void LoadLevel(int index)
         {
             _levelIndex = index;
+            _scoreAtLevelStart = _score;
             Levels.LevelData data = Levels.All[index];
-            Node levelRoot = GD.Load<PackedScene>("res://Levels/level_" + (index + 1).ToString("00") + ".tscn").Instantiate();
+            string number = (index + 1).ToString("00");
+            string levelPath = "res://Levels/level_" + number + ".tscn";
+            if (!ResourceLoader.Exists(levelPath))
+            {
+                levelPath = "res://Levels/level" + number + ".tscn";
+            }
+            Node levelRoot = GD.Load<PackedScene>(levelPath).Instantiate();
             TileMapLayer layer = levelRoot.GetNode<TileMapLayer>("Tiles");
             Rect2I area = layer.GetUsedRect();
             _width = area.Size.X;

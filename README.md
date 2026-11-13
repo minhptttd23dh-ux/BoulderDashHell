@@ -60,4 +60,3 @@ and a falling rock turns a demon into a ring. Speed: `EnemyStepTime` on the Main
 3. Leave a cell unpainted to make it void. Paint exactly one player tile and one exit tile.
 4. For a new level, duplicate a scene as `level\_NN.tscn` with the next number and add its entry to `Code/Levels.cs`.
 Each tile has a custom data label called `kind`. The code reads that label, so a new tile type needs a label and a case in `LoadLevel` in `Code/Game.cs`.
-

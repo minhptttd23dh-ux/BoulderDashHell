@@ -40,7 +40,7 @@ namespace BoulderDash
                     if (dir.Y == 0)
                     {
                         Vector2I beyond = target + dir;
-                        if (InBounds(beyond.X, beyond.Y) && _grid[beyond.X, beyond.Y] == Tile.Empty)
+                        if (InBounds(beyond.X, beyond.Y) && _grid[beyond.X, beyond.Y] == Tile.Empty && EnemyAt(beyond.X, beyond.Y) == null)
                         {
                             _grid[beyond.X, beyond.Y] = Tile.Boulder;
                             _grid[target.X, target.Y] = Tile.Empty;

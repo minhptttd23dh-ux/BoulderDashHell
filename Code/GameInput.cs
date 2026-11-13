@@ -17,6 +17,7 @@ namespace BoulderDash
                     }
                     else
                     {
+                        _score = _scoreAtLevelStart;
                         LoadLevel(_levelIndex);
                     }
                 }

@@ -20,7 +20,9 @@ namespace BoulderDash
             {
                 Title = "Welcome to Hell",
                 Tutorial = true,
-                Hint = "Move with the arrow keys or WASD. You dig through dirt just by walking into it. Collect 3 rings (the spinning pentagrams) to open the gate, then walk into the gate.",
+                // by Yolly: begin first-level warning about falling pentagrams
+                Hint = "Move with the arrow keys or WASD. You dig through dirt just by walking into it. Collect 3 rings (the spinning pentagrams) to open the gate, then walk into the gate. Falling pentagrams can crush you too.",
+                // by Yolly: end first-level warning about falling pentagrams
                 DiamondsNeeded = 3,
                 TimeSeconds = 150,
             },
@@ -28,7 +30,9 @@ namespace BoulderDash
             {
                 Title = "Falling Rocks",
                 Tutorial = true,
-                Hint = "Rocks fall when nothing is under them, and a falling rock crushes you. A resting rock is safe only while you keep moving. Stand still under one and it wobbles, then drops. You can push a rock sideways. Dig out the rings and reach the gate.",
+                // by Yolly: begin explain rolling skulls and pentagrams
+                Hint = "Skulls and pentagrams fall into empty spaces. Both can roll off another skull or pentagram if the side and space below it are clear; either side may be chosen when both are open. A falling skull crushes you. A resting skull or pentagram is safe only while you keep moving. Stand still under either and it wobbles, then drops. You can push a skull sideways. Dig out the rings and reach the gate.",
+                // by Yolly: end explain rolling skulls and pentagrams
                 DiamondsNeeded = 3,
                 TimeSeconds = 150,
             },
